@@ -65,6 +65,9 @@
             -webkit-background-size: auto 37px;
             -webkit-animation: rotate2 1s steps(12) infinite;
         }
+        .show{
+            display: -webkit-box;
+        }
         @-webkit-keyframes rotate2{
             from{background-position:0 0}
             to{background-position:-444px 0}
@@ -79,12 +82,12 @@
             var files = evt.target.files; 
             f = files[0];
             if (f.name.match(".*\.jpg")|| f.name.match(".*\.png")){
-                document.getElementById('overlay').style.display = '-webkit-box';
+                document.getElementById('overlay').className += ' show';
                 document.getElementById('upfile-submit').click();
             }
         }
     </script>
-    <div class="wrapper blur">
+    <div class="wrapper">
         <div class="logo"><img src="img/logo.png" ></div>
         <div class="banner"></div>
         <form name="form" method="post" action="post.php" enctype ="multipart/form-data">
