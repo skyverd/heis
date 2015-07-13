@@ -19,12 +19,12 @@
 ?>
     <body>
         <style type="text/css">
-            html, body{height: 100%;}
-            .warpper{background-color: #2AB3DF;height: 100%;}
+            html, body{height: 100%;background-color: #2AB3DF;}
+            .warpper{height: 100%;}
             .box{width: 100%;display: box;display:-webkit-box;line-height: 0;background-color: #fff;}
             .item{box-flex:1;-webkit-box-flex:1;padding: .5em;overflow: hidden;}
-            .item textarea{width: 100%;height:110px;resize:none;border: 1px solid #cdcdcd;background-color: #fff;-webkit-appearance: none;border-radius: 0;}
-            .item .img{width: 100%;max-width:100%;height: 110px;}
+            .item textarea{width: 100%;height:100px;resize:none;border: 1px solid #cdcdcd;background-color: #fff;-webkit-appearance: none;border-radius: 0;}
+            .item .img{width: 100%;max-width:100%;height: 100px;}
             .btn{
                 display: inline-block;
                 border-radius: 5px;
@@ -50,12 +50,14 @@
                         <div class="box">
                     <?php } ?>
                             <div class="item">
+                                <div class="itemwrapper">
                                 <?php if ($i == 4){ ?>
                                     <img class="img" src="<?php echo $filePath; ?>" />
                                     <textarea class="desc hide" name="desc[]"></textarea>
                                 <?php }else{ ?>
                                     <textarea class="desc" name="desc[]"><?php echo $lang[$cate][$i]; ?></textarea>
                                 <?php } ?>
+                                </div>
                             </div>
                     <?php if ($i % 3 == 2){ ?>
                         </div>

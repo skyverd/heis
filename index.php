@@ -12,13 +12,13 @@
         .upfile-input{display: none;}
         .upfile-submit{display: none;}
         .upfile-btn{
-            height: 140px;
+            height: 120px;
             font-size: 20px;
-            line-height: 140px;
+            line-height: 120px;
             text-align: center;
-            width: 140px;
+            width: 120px;
             margin: 0 auto;
-            border-radius: 70px;
+            border-radius: 60px;
             color: #fef4e9;
             border: 1px solid #da7c0c;
             background: #f78d1d;
@@ -33,6 +33,42 @@
             background: -moz-linear-gradient(top,  #f88e11,  #f06015);
             filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
         }
+        .overlay{
+            position: absolute;
+            top:0;
+            bottom:0;
+            width: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 100;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            display: none;    
+        }
+        .ui-dialog-cnt {
+            width: 130px;
+            height: 110px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            text-align: center;
+            background: rgba(0,0,0,.65);
+            border-radius: 6px;
+            color: #fff;
+        }
+        .ui-loading-bright {
+            width: 37px;
+            height: 37px;
+            display: block;
+            background-image: url(img/loading_sprite_white.png);
+            -webkit-background-size: auto 37px;
+            -webkit-animation: rotate2 1s steps(12) infinite;
+        }
+        @-webkit-keyframes rotate2{
+            from{background-position:0 0}
+            to{background-position:-444px 0}
+        }
     </style>
     <script type="text/javascript">
         function upload(){
@@ -42,11 +78,13 @@
         function myMethod(evt) {
             var files = evt.target.files; 
             f = files[0];
-            if (f.name.match(".*\.jpg")|| f.name.match(".*\.png"))
+            if (f.name.match(".*\.jpg")|| f.name.match(".*\.png")){
+                document.getElementById('overlay').style.display = '-webkit-box';
                 document.getElementById('upfile-submit').click();
+            }
         }
     </script>
-    <div class="wrapper">
+    <div class="wrapper blur">
         <div class="logo"><img src="img/logo.png" ></div>
         <div class="banner"></div>
         <form name="form" method="post" action="post.php" enctype ="multipart/form-data">
@@ -54,6 +92,9 @@
             <input id="upfile-submit" type="submit" value="上传" class="upfile-submit" />
         </form>
         <div class="upfile-btn" onclick="upload();">点击上传</div>
+        <div class="overlay" id="overlay">
+            <div class="ui-dialog-cnt"><i class="ui-loading-bright"></i><p>加载中...</p></div>
+        </div>
     </div>
     <script type="text/javascript">
         document.getElementById('upfile-input').addEventListener('change', myMethod, false);
